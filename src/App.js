@@ -2,18 +2,7 @@ import './App.css';
 import { Component } from 'react';// react라는 라이브러리에서 Component라는 클래스를 로딩
 import Toc from './components/Toc'
 import Title from './components/Title'
-
-class Subject extends Component {
-  render(){
-    return (
-      //안에 html 코드
-      <div>
-        <h1>{this.props.title}</h1>
-        <h3>{this.props.sub}</h3>
-      </div>// 태그로 감싸야 함
-    );
-  }
-}
+import Subject from './components/Subject'
 
 class App extends Component {
   constructor(props){// render라는 함수보다 먼저 실행이 되면서 컴포넌트 초기화 담당
