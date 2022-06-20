@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props){// render라는 함수보다 먼저 실행이 되면서 컴포넌트 초기화 담당
     super(props);
     this.state = {// state값 초기화 / 컴포넌트가 일단 생성이 된 다음에는 state의 값을 수정하려면 setState 이용
-      mode:'bw',
+      type:'bw',
       subject:{title:'Bat-fanfictions on Archive of Our Own', 
       sub_bw:'with Bruce Wayne', 
       sub_jb:'He took me away from you', 
@@ -65,15 +65,15 @@ class App extends Component {
   }
   render() {// state가 바뀌면 render 함수가 다시 호출됨 - 하위 컴포넌트들의 render함수 또한 재호출 > 화면이 다시 그려짐
     var _sub = null;
-    if (this.state.mode === 'bw'){
+    if (this.state.type === 'bw'){
       _sub = this.state.subject.sub_bw;
-    }else if (this.state.mode === 'jb'){
+    }else if (this.state.type === 'jb'){
       _sub = this.state.subject.sub_jb;
-    }else if (this.state.mode === 'sb'){
+    }else if (this.state.type === 'sb'){
       _sub = this.state.subject.sub_sb;
-    }else if (this.state.mode === 'hb'){
+    }else if (this.state.type === 'hb'){
       _sub = this.state.subject.sub_hb;
-    }else if (this.state.mode === 'none'){
+    }else if (this.state.type === 'none'){
       _sub = this.state.subject.sub_none;
     }
     return (// 부모(App)의 state를 자식한테 전달할 때는 props를 통해서 전달
@@ -83,7 +83,7 @@ class App extends Component {
           sub={_sub}
           onChangePage={function(){
             this.setState({
-              mode:'bw'
+              type:'bw'
             });
           }.bind(this)}>
         </Subject>
@@ -96,7 +96,7 @@ class App extends Component {
         <Title main={this.state.couple.jb}
         onChangePage={function(){// onChangePage라는 이벤트 / props의 형태로 함수 전달
           this.setState({
-            mode:'jb'
+            type:'jb'
           });
         }.bind(this)}></Title>
         <Toc data={this.state.jb_contents}></Toc>
@@ -104,7 +104,7 @@ class App extends Component {
         <Title main={this.state.couple.sb}
         onChangePage={function(){
           this.setState({
-            mode:'sb'
+            type:'sb'
           });
         }.bind(this)}></Title>
         <Toc data={this.state.sb_contents}></Toc>
@@ -112,7 +112,7 @@ class App extends Component {
         <Title main={this.state.couple.hb}
         onChangePage={function(){
           this.setState({
-            mode:'hb'
+            type:'hb'
           });
         }.bind(this)}></Title>
         <Toc data={this.state.hb_contents}></Toc>
@@ -120,7 +120,7 @@ class App extends Component {
         <Title main={this.state.couple.none}
         onChangePage={function(){
           this.setState({
-            mode:'none'
+            type:'none'
           });
         }.bind(this)}></Title>
         <Toc data={this.state.none_contents}></Toc>
