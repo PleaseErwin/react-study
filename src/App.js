@@ -4,11 +4,14 @@ import Toc from './components/Toc'
 import Title from './components/Title'
 import Subject from './components/Subject'
 import Control from './components/Control'
+import ReadContent from './components/ReadContent'
+import CreateContent from './components/CreateContent'
 
 class App extends Component {
   constructor(props){// render라는 함수보다 먼저 실행이 되면서 컴포넌트 초기화 담당
     super(props);
     this.state = {// state값 초기화 / 컴포넌트가 일단 생성이 된 다음에는 state의 값을 수정하려면 setState 이용
+      mode:'read',
       type:'bw',
       subject:{title:'Bat-fanfictions on Archive of Our Own', 
       sub_bw:'with Bruce Wayne', 
@@ -87,9 +90,10 @@ class App extends Component {
             });
           }.bind(this)}>
         </Subject>
+        <ReadContent></ReadContent>
         <Control onChangeMode={function(mode){// 핸들러
           this.setState({
-            // 모드 변경
+            mode:mode
           });
         }.bind(this)}></Control>
         <br></br>
