@@ -5,7 +5,9 @@ class Subject extends Component {
     return (
       //안에 html 코드
       <div>
-        <h1>{this.props.title}</h1>
+        <h1><a href='/' onClick={function(e){// 첫 번째 매개변수인 e는 event 객체
+          e.preventDefault();// 이벤트가 발생한 태그가 기본적인 동작을 못하게 막음
+        }.bind(this)}>{this.props.title}</a></h1>
         <h3>{this.props.sub}</h3>
       </div>// 태그로 감싸야 함
     );

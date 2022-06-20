@@ -16,7 +16,7 @@ class App extends Component {
       sub_hb:'Who the hell\'s Bruce Wayne?', 
       sub_none:''},
       couple:{sb:'Clark Kent & Bruce Wayne', hb:'Hal Jordan & Bruce Wayne', jb:'Jason Todd & Bruce Wayne', none:'None-couple'},
-      jb_contents:[
+      jb_contents:[// 예시에는 객체마다 id값을 줬음
         {link:'https://archiveofourown.org/works/35657686'},
         {link:'https://archiveofourown.org/works/27338314/chapters/66795883'},
         {link:'https://archiveofourown.org/works/20480720/chapters/48598514'}
