@@ -67,7 +67,13 @@ class App extends Component {
     }
   }
   render() {// state가 바뀌면 render 함수가 다시 호출됨 - 하위 컴포넌트들의 render함수 또한 재호출 > 화면이 다시 그려짐
-    var _sub = null;
+    var _sub, _article = null;
+    if (this.state.mode === 'read'){
+      _article = <ReadContent type={this.state.type}></ReadContent>;
+    }else if (this.state.mode === 'create'){
+      _article = <CreateContent></CreateContent>;
+    }
+
     if (this.state.type === 'bw'){
       _sub = this.state.subject.sub_bw;
     }else if (this.state.type === 'jb'){
@@ -86,11 +92,12 @@ class App extends Component {
           sub={_sub}
           onChangePage={function(){
             this.setState({
-              type:'bw'
+              type:'bw',
+              mode:'read'
             });
           }.bind(this)}>
         </Subject>
-        <ReadContent></ReadContent>
+        {_article}
         <Control onChangeMode={function(mode){// 핸들러
           this.setState({
             mode:mode
@@ -100,7 +107,8 @@ class App extends Component {
         <Title main={this.state.couple.jb}
         onChangePage={function(){// onChangePage라는 이벤트 / props의 형태로 함수 전달
           this.setState({
-            type:'jb'
+            type:'jb',
+            mode:'read'
           });
         }.bind(this)}></Title>
         <Toc data={this.state.jb_contents}></Toc>
@@ -108,7 +116,8 @@ class App extends Component {
         <Title main={this.state.couple.sb}
         onChangePage={function(){
           this.setState({
-            type:'sb'
+            type:'sb',
+            mode:'read'
           });
         }.bind(this)}></Title>
         <Toc data={this.state.sb_contents}></Toc>
@@ -116,7 +125,8 @@ class App extends Component {
         <Title main={this.state.couple.hb}
         onChangePage={function(){
           this.setState({
-            type:'hb'
+            type:'hb',
+            mode:'read'
           });
         }.bind(this)}></Title>
         <Toc data={this.state.hb_contents}></Toc>
@@ -124,7 +134,8 @@ class App extends Component {
         <Title main={this.state.couple.none}
         onChangePage={function(){
           this.setState({
-            type:'none'
+            type:'none',
+            mode:'read'
           });
         }.bind(this)}></Title>
         <Toc data={this.state.none_contents}></Toc>
