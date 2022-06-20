@@ -79,19 +79,44 @@ class App extends Component {
       <div className="App">
         <Subject 
           title={this.state.subject.title}
-          sub={_sub}>
+          sub={_sub}
+          onChangePage={function(){
+            this.setState({
+              mode:'bw'
+            });
+          }.bind(this)}>
         </Subject>
         <br></br>
-        <Title main={this.state.couple.jb} mode={'jb'}></Title>
+        <Title main={this.state.couple.jb}
+        onChangePage={function(){// onChangePage라는 이벤트 / props의 형태로 함수 전달
+          this.setState({
+            mode:'jb'
+          });
+        }.bind(this)}></Title>
         <Toc data={this.state.jb_contents}></Toc>
         <br></br>
-        <Title main={this.state.couple.sb} mode={'sb'}></Title>
+        <Title main={this.state.couple.sb}
+        onChangePage={function(){
+          this.setState({
+            mode:'sb'
+          });
+        }.bind(this)}></Title>
         <Toc data={this.state.sb_contents}></Toc>
         <br></br>
-        <Title main={this.state.couple.hb} mode={'hb'}></Title>
+        <Title main={this.state.couple.hb}
+        onChangePage={function(){
+          this.setState({
+            mode:'hb'
+          });
+        }.bind(this)}></Title>
         <Toc data={this.state.hb_contents}></Toc>
         <br></br>
-        <Title main={this.state.couple.none} mode={'none'}></Title>
+        <Title main={this.state.couple.none}
+        onChangePage={function(){
+          this.setState({
+            mode:'none'
+          });
+        }.bind(this)}></Title>
         <Toc data={this.state.none_contents}></Toc>
         <br></br>
       </div>
