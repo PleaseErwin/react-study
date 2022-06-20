@@ -3,6 +3,7 @@ import { Component } from 'react';// react라는 라이브러리에서 Component
 import Toc from './components/Toc'
 import Title from './components/Title'
 import Subject from './components/Subject'
+import Control from './components/Control'
 
 class App extends Component {
   constructor(props){// render라는 함수보다 먼저 실행이 되면서 컴포넌트 초기화 담당
@@ -86,6 +87,11 @@ class App extends Component {
             });
           }.bind(this)}>
         </Subject>
+        <Control onChangeMode={function(mode){// 핸들러
+          this.setState({
+            // 모드 변경
+          });
+        }.bind(this)}></Control>
         <br></br>
         <Title main={this.state.couple.jb}
         onChangePage={function(){// onChangePage라는 이벤트 / props의 형태로 함수 전달
