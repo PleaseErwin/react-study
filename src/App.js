@@ -71,7 +71,29 @@ class App extends Component {
     if (this.state.mode === 'read'){
       _article = <ReadContent type={this.state.type}></ReadContent>;
     }else if (this.state.mode === 'create'){
-      _article = <CreateContent></CreateContent>;
+      _article = <CreateContent onSubmit={function(_couple, _link){
+        if (_couple === 'jb'){// concat은 push와 다르게 원본을 바꾸지 않음 - 새로운 배열 리턴
+          var _jb_contents = this.state.jb_contents.concat({link:_link});
+          this.setState({
+            jb_contents:_jb_contents
+          });
+        }else if (_couple === 'sb'){
+          var _sb_contents = this.state.sb_contents.concat({link:_link});
+          this.setState({
+            sb_contents:_sb_contents
+          });
+        }else if (_couple === 'hb'){
+          var _hb_contents = this.state.hb_contents.concat({link:_link});
+          this.setState({
+            hb_contents:_hb_contents
+          });
+        }else if (_couple === 'none'){
+          var _none_contents = this.state.none_contents.concat({link:_link});
+          this.setState({
+            none_contents:_none_contents
+          });
+        }
+      }.bind(this)}></CreateContent>;
     }
 
     if (this.state.type === 'bw'){
