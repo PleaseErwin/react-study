@@ -110,7 +110,35 @@ class App extends Component {
         }
       }.bind(this)}></CreateContent>;
     }else if (this.state.mode === 'update'){
-      _article = <UpdateContent sub={_sub}></UpdateContent>
+      _article = <UpdateContent sub={_sub} onSubmit={function(changed_sub){
+        var new_subject = Object.assign({}, this.state.subject);
+        if (this.state.type === 'bw'){
+          new_subject.sub_bw = changed_sub;
+          this.setState({
+            subject:new_subject
+          });
+        }else if (this.state.type === 'jb'){
+          new_subject.sub_jb = changed_sub;
+          this.setState({
+            subject:new_subject
+          });
+        }else if (this.state.type === 'sb'){
+          new_subject.sub_sb = changed_sub;
+          this.setState({
+            subject:new_subject
+          });
+        }else if (this.state.type === 'hb'){
+          new_subject.sub_hb = changed_sub;
+          this.setState({
+            subject:new_subject
+          });
+        }else if (this.state.type === 'none'){
+          new_subject.sub_none = changed_sub;
+          this.setState({
+            subject:new_subject
+          });
+        }
+      }.bind(this)}></UpdateContent>
     }
 
     return (// 부모(App)의 state를 자식한테 전달할 때는 props를 통해서 전달

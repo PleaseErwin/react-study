@@ -13,7 +13,7 @@ class UpdateContent extends Component {
         <form action='/update_process' method='post'
         onSubmit={function(e){
           e.preventDefault();
-          // this.props.onSubmit(this.state.subtext);//e.target.sub.value
+          this.props.onSubmit(this.state.subtext);
         }.bind(this)}>
           <p><input type='text' name='sub' placeholder=''
           value={this.state.subtext}
