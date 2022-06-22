@@ -6,6 +6,7 @@ import Subject from './components/Subject'
 import Control from './components/Control'
 import ReadContent from './components/ReadContent'
 import CreateContent from './components/CreateContent'
+import UpdateContent from './components/UpdateContent'
 
 class App extends Component {
   constructor(props){// render라는 함수보다 먼저 실행이 되면서 컴포넌트 초기화 담당
@@ -68,6 +69,19 @@ class App extends Component {
   }
   render() {// state가 바뀌면 render 함수가 다시 호출됨 - 하위 컴포넌트들의 render함수 또한 재호출 > 화면이 다시 그려짐
     var _sub, _article = null;
+
+    if (this.state.type === 'bw'){
+      _sub = this.state.subject.sub_bw;
+    }else if (this.state.type === 'jb'){
+      _sub = this.state.subject.sub_jb;
+    }else if (this.state.type === 'sb'){
+      _sub = this.state.subject.sub_sb;
+    }else if (this.state.type === 'hb'){
+      _sub = this.state.subject.sub_hb;
+    }else if (this.state.type === 'none'){
+      _sub = this.state.subject.sub_none;
+    }
+
     if (this.state.mode === 'read'){
       _article = <ReadContent type={this.state.type}></ReadContent>;
     }else if (this.state.mode === 'create'){
@@ -95,19 +109,10 @@ class App extends Component {
           });
         }
       }.bind(this)}></CreateContent>;
+    }else if (this.state.mode === 'update'){
+      _article = <UpdateContent sub={_sub}></UpdateContent>
     }
 
-    if (this.state.type === 'bw'){
-      _sub = this.state.subject.sub_bw;
-    }else if (this.state.type === 'jb'){
-      _sub = this.state.subject.sub_jb;
-    }else if (this.state.type === 'sb'){
-      _sub = this.state.subject.sub_sb;
-    }else if (this.state.type === 'hb'){
-      _sub = this.state.subject.sub_hb;
-    }else if (this.state.type === 'none'){
-      _sub = this.state.subject.sub_none;
-    }
     return (// 부모(App)의 state를 자식한테 전달할 때는 props를 통해서 전달
       <div className="App">
         <Subject 
