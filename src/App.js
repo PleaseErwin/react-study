@@ -72,12 +72,13 @@ class App extends Component {
       _article = <ReadContent type={this.state.type}></ReadContent>;
     }else if (this.state.mode === 'create'){
       _article = <CreateContent onSubmit={function(_couple, _link){
-        if (_couple === 'jb'){// concat은 push와 다르게 원본을 바꾸지 않음 - 새로운 배열 리턴
-          var _jb_contents = this.state.jb_contents.concat({link:_link});
+        if (_couple === 'jb'){// Array.from은 내용이 같을 뿐 완전히 다른 배열을 새로 만듦
+          var new_jb_contents = Array.from(this.state.jb_contents);
+          new_jb_contents.push({link:_link});
           this.setState({
-            jb_contents:_jb_contents
+            jb_contents:new_jb_contents
           });
-        }else if (_couple === 'sb'){
+        }else if (_couple === 'sb'){// concat은 push와 다르게 원본을 바꾸지 않음 - 새로운 배열 리턴
           var _sb_contents = this.state.sb_contents.concat({link:_link});
           this.setState({
             sb_contents:_sb_contents
