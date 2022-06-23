@@ -108,6 +108,9 @@ class App extends Component {
             none_contents:_none_contents
           });
         }
+        this.setState({
+          mode:'read'
+        });
       }.bind(this)}></CreateContent>;
     }else if (this.state.mode === 'update'){
       _article = <UpdateContent sub={_sub} onSubmit={function(changed_sub){
@@ -138,6 +141,9 @@ class App extends Component {
             subject:new_subject
           });
         }
+        this.setState({
+          mode:'read'
+        });
       }.bind(this)}></UpdateContent>
     }
 
