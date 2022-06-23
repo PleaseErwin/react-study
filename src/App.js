@@ -117,31 +117,17 @@ class App extends Component {
         var new_subject = Object.assign({}, this.state.subject);
         if (this.state.type === 'bw'){
           new_subject.sub_bw = changed_sub;
-          this.setState({
-            subject:new_subject
-          });
         }else if (this.state.type === 'jb'){
           new_subject.sub_jb = changed_sub;
-          this.setState({
-            subject:new_subject
-          });
         }else if (this.state.type === 'sb'){
           new_subject.sub_sb = changed_sub;
-          this.setState({
-            subject:new_subject
-          });
         }else if (this.state.type === 'hb'){
           new_subject.sub_hb = changed_sub;
-          this.setState({
-            subject:new_subject
-          });
         }else if (this.state.type === 'none'){
           new_subject.sub_none = changed_sub;
-          this.setState({
-            subject:new_subject
-          });
         }
         this.setState({
+          subject:new_subject,
           mode:'read'
         });
       }.bind(this)}></UpdateContent>
@@ -160,10 +146,30 @@ class App extends Component {
           }.bind(this)}>
         </Subject>
         {_article}
-        <Control onChangeMode={function(mode){// 핸들러
-          this.setState({
-            mode:mode
-          });
+        <Control onChangeMode={function(_mode){// 핸들러
+          if (_mode === 'delete'){// 현재 state의 mode가 delete인 것은 아님
+            if (window.confirm('Are you sure you want to reset it?')){// 사용자가 확인을 누르면 confirm은 true가 됨
+              var new_subject = Object.assign({}, this.state.subject);
+              if (this.state.type === 'bw'){
+                new_subject.sub_bw = '';
+              }else if (this.state.type === 'jb'){
+                new_subject.sub_jb = '';
+              }else if (this.state.type === 'sb'){
+                new_subject.sub_sb = '';
+              }else if (this.state.type === 'hb'){
+                new_subject.sub_hb = '';
+              }else if (this.state.type === 'none'){
+                new_subject.sub_none = '';
+              }
+              this.setState({
+                subject:new_subject,
+              });
+            }
+          }else {
+            this.setState({
+              mode:_mode
+            });
+          }
         }.bind(this)}></Control>
         <br></br>
         <Title main={this.state.couple.jb}
