@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.677055a9.css","mappings":"AAAA,KACE,wBACF,CCFA,KACE,iBACF,CAEA,mBACE,oBAAqB,CACrB,WACF","sources":["index.css","App.css"],"sourcesContent":["body {\n  background-color: powderblue;\n}",".App {\n  text-align: center;\n}\n\ninput[type='button'] {\n  display: inline-block;\n  margin: 10px;\n}"],"names":[],"sourceRoot":""}
