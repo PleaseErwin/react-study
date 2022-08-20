@@ -148,7 +148,7 @@ class App extends Component {
         {_article}
         <Control onChangeMode={function(_mode){// 핸들러
           if (_mode === 'delete'){// 현재 state의 mode가 delete인 것은 아님
-            if (window.confirm('Are you sure you want to reset it?')){// 사용자가 확인을 누르면 confirm은 true가 됨
+            if (window.confirm('Do you really want to reset the title?')){// 사용자가 확인을 누르면 confirm은 true가 됨
               var new_subject = Object.assign({}, this.state.subject);
               if (this.state.type === 'bw'){
                 new_subject.sub_bw = '';
