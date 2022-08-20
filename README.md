@@ -1,2 +1,4 @@
 # react-study
-making simple web app using react
+making simple fanfics list web app using react
+
+> <https://pleaseerwin.github.io/react-study/>
